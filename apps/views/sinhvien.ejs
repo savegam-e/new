@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    TRANG sinhvien
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>Ho ten</td>
+            <td>Email</td>
+            <td>Thời gian chỉnh sửa</td>
+            <td><a href="/sinhvien/them">them</a></td>
+        </tr>
+        <%sinhvien.rows.forEach(function(sv){%>
+        <tr">
+            <td><%=sv.id%></td>
+            <td><%=sv.hoten%></td>
+            <td><%=sv.email%></td>
+            <td><%=moment(sv.timeChange).format("DD/MM/YYYY HH:mm:s")%></td>
+            <td><a href="/sinhvien/sua/<%=sv.id%>">sua</a>-<a href="/sinhvien/xoa/<%= sv.id%>" onclick="return confirm('ban thuc su muon xoa?')">Xoa</a></td>
+        </tr>
+        <%})%>
+    </table>
+
+    <script>
+    </script>
+</body>
+</html>
