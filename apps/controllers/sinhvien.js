@@ -16,7 +16,7 @@ router.get("/", function (req, res) {
 				return console.error('loi truy van', err.message);
 			}
 			if (result != undefined) {
-				console.log(result)
+				// console.log(result)
 				res.render("./sinhvien", { sinhvien: result, moment })
 			} else {
 				res.send("Không thấy kết quả")

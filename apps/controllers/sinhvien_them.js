@@ -2,12 +2,19 @@ let express = require('express');
 let router = express.Router();
 let moment = require('moment');
 const pool = require("../common/database")
+const { body, validationResult } = require('express-validator');
 
 router.get('/', (req, res, next) => {
 	res.render('sinhvien_them')
 })
 
-router.post('/', (req, res, next) => {
+router.post('/',body('hoten').isLength({min: 5}), (req, res, next) => {
+	const errors = validationResult(req);	
+	console.log(errors)
+	if (!errors.isEmpty()) {		
+		return res.status(400).json({ errors: errors.array() });
+	  }
+
     pool.connect(function (err, client, done) {
 		if (err) {
 			return console.error('loi ket noi database ', err);
